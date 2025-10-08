@@ -21,10 +21,10 @@ function generatePassword(
   allowedChars += includeSymbols ? symbolChars : "";
 
   if (length <= 0) {
-    return `(password length must be at least 1)`;
+    return `(Password length must be at least 1)`;
   }
   if (allowedChars.length === 0) {
-    return `(At least 1 set of character needs to be selected)`;
+    return `(At least one set of characters must be selected)`;
   }
 
   for (let i = 0; i < length; i++) {
@@ -35,11 +35,12 @@ function generatePassword(
   return password;
 }
 
-const passwordLength = 20;
-const includeLowercase = true;
-const includeUppercase = true;
-const includeNumbers = true;
-const includeSymbols = true;
+// --- Taking input from user ---
+const passwordLength = parseInt(prompt("Enter password length:"));
+const includeLowercase = confirm("Include lowercase letters?");
+const includeUppercase = confirm("Include uppercase letters?");
+const includeNumbers = confirm("Include numbers?");
+const includeSymbols = confirm("Include symbols?");
 
 const password = generatePassword(
   passwordLength,
@@ -50,3 +51,4 @@ const password = generatePassword(
 );
 
 console.log(`Generated password: ${password}`);
+alert(`Generated password: ${password}`);
